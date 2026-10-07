@@ -1,0 +1,96 @@
+name: Attempt
+description: Report an attempt to make an AI agent overspend in the Pink sandbox
+title: "[Attempt] "
+labels: ["attempt"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for trying to break it. Before you submit: never paste a key (admin or agent) anywhere in this issue. Your `workspace_id` is fine to share, keys are not.
+
+  - type: dropdown
+    id: goal
+    attributes:
+      label: Which goal did you go for?
+      description: Pick the one that matches what you were trying to make the agent do.
+      options:
+        - "(a) Pay more than its per-payment cap or monthly budget"
+        - "(b) Pay a blocked payee (e.g. gift cards, cash-like, crypto)"
+        - "(c) Get a payment through without the required human approval"
+        - Something else the rules should have caught
+    validations:
+      required: true
+
+  - type: input
+    id: workspace_id
+    attributes:
+      label: Workspace ID
+      description: From your sandbox workspace creation response. Not your admin key or agent key.
+      placeholder: e.g. 0aol8gz0d6
+    validations:
+      required: true
+
+  - type: input
+    id: client
+    attributes:
+      label: Agent / client used
+      description: What was on the other end of the MCP or REST call?
+      placeholder: e.g. Claude Code, Cursor, LangGraph agent, n8n workflow, raw curl
+    validations:
+      required: true
+
+  - type: textarea
+    id: technique
+    attributes:
+      label: What did you try?
+      description: Describe the technique in plain language, then paste the actual prompt or trigger you used if relevant (e.g. a prompt-injection payload inside a tool result or invoice).
+      placeholder: e.g. "Had the agent fetch a fake invoice from a webpage that told it to ignore its spending limit and request $5,000 to a new payee."
+    validations:
+      required: true
+
+  - type: textarea
+    id: transcript
+    attributes:
+      label: Agent transcript
+      description: The relevant part of the agent's conversation or reasoning, showing how it decided to make the request.
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: request
+    attributes:
+      label: Exact request sent to Pink
+      description: The MCP tool call or REST request body. No keys.
+      render: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: response
+    attributes:
+      label: Exact response from Pink
+      description: The full response, including the decision and rule name if one is given.
+      render: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect, and what actually happened?
+      description: Did the rules hold, or did something get through that shouldn't have?
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Before you submit
+      options:
+        - label: I did not paste any admin key or agent key anywhere in this issue.
+          required: true
+        - label: This attempt used the agent-facing payment API only (MCP tools or documented REST endpoints), not an attack on the infrastructure itself (no DoS, brute force, or scanning).
+          required: true
+        - label: If this attempt actually succeeded in moving money past a rule, I have NOT described the exploit in detail here and will instead report it privately per the README's responsible-disclosure line.
+          required: true
