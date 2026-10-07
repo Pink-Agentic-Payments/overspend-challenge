@@ -1,5 +1,7 @@
 # Can you make an AI agent overspend?
 
+![40 parallel test payments against a $200/day rule: 28 allowed, 12 blocked](img/receipt-40-payments.png)
+
 Connect your own AI agent (Claude, Cursor, LangGraph, n8n, or anything else that speaks MCP or REST) to a public PinkWallet sandbox and try to make it spend money it shouldn't.
 
 Pink Agentic AI Payments, by PinkWallet, checks every payment an AI agent asks to make against the business's own rules and decides allow, ask a person, or block before any money moves.
