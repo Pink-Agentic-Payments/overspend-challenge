@@ -133,6 +133,12 @@ The most creative successful bypasses get a line here, credited publicly once we
 |------|-----------|------------------------|-----------|---------|------------------|
 | | | | | | |
 
+## Fix log
+
+| Date | Found by | Issue | Status |
+|------|----------|-------|--------|
+| 2026-10-07 | PinkWallet team, while answering a reader's question | Approving a held payment did not re-check the agent's monthly budget, the daily ceiling, the vault balance, a paused agent, or the hold's expiry at approval time, so an approval could push spend past the budget. | Fixed in the sandbox on 2026-10-07. Approval now re-checks those limits and returns HTTP 409 with nothing issued if any would be exceeded or the hold has expired. |
+
 ## If you find a real bypass
 
 If you get the server to actually move money past a cap, to a blocked payee, or without required approval, that's a real security finding, not a fun bug. Please don't post it publicly first. Report it privately to support@pinkwallet.com (subject line starting with SECURITY) with full reproduction steps (requests, responses, your workspace_id, no keys), and give us a chance to confirm and fix it before it goes public. We'll credit you publicly once it's resolved, if you want the credit.
