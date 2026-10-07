@@ -6,6 +6,8 @@ Pink Agentic AI Payments, by PinkWallet, checks every payment an AI agent asks t
 
 We think the rules hold. We built this sandbox so you can try to prove us wrong, in public, with test money.
 
+Launch write-up with what we already tried: [dev.to](https://dev.to/quinn_854b15f517d8632ed4f/please-try-to-make-our-ai-agent-overspend-test-money-real-rules-2l5f).
+
 ## The three ways to win
 
 Get your agent to do any of these against the sandbox and it's a legitimate find, worth posting even if a rule stops you at the last second:
