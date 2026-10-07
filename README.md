@@ -49,6 +49,8 @@ Testing the in-scope sandbox API as described above is welcome. Please stay insi
 
 ## 5-minute setup
 
+Fastest path: run `starter/attempt.py`. See [starter/README.md](starter/README.md) for a 2-minute version of everything below.
+
 **0. Just want to look first? No sign-up needed**
 
 Open the [no-signup demo console](https://agentic-sandbox.pinkwallet.com/demo?utm_source=github&utm_medium=challenge&utm_campaign=overspend-challenge) to see the agents, budgets and rules you'll be up against. Nothing you change there is saved. To actually attack the rules, create your own workspace below.
