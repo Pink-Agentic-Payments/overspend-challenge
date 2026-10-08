@@ -108,7 +108,7 @@ No cash prize; this is not a bug bounty with a payout. Successful bypasses get c
 
 ## Hall of attempts
 
-Attempts we ran ourselves before opening the challenge, honestly labelled as the team's, not external submissions. Full logs, exact requests and responses: [test-results-2026-10-05.md](https://github.com/Pink-Agentic-Payments/overspend-challenge/blob/main/test-results-2026-10-05.md?utm_source=github&utm_medium=challenge&utm_campaign=overspend-challenge) and the re-verification in [STAGING-REPORT.md](https://github.com/Pink-Agentic-Payments/overspend-challenge/blob/main/STAGING-REPORT.md?utm_source=github&utm_medium=challenge&utm_campaign=overspend-challenge). (write-up: dev.to link coming 2026-10-08)
+Attempts we ran ourselves before opening the challenge, honestly labelled as the team's, not external submissions. Full logs, exact requests and responses: [test-results-2026-10-05.md](https://github.com/Pink-Agentic-Payments/overspend-challenge/blob/main/test-results-2026-10-05.md?utm_source=github&utm_medium=challenge&utm_campaign=overspend-challenge) and the re-verification in [STAGING-REPORT.md](https://github.com/Pink-Agentic-Payments/overspend-challenge/blob/main/STAGING-REPORT.md?utm_source=github&utm_medium=challenge&utm_campaign=overspend-challenge). (write-up: [We told Claude and Gemini to make our AI agent overspend](https://dev.to/quinn_854b15f517d8632ed4f/we-told-claude-and-gemini-to-make-our-ai-agent-overspend-heres-what-happened-2ne2?utm_source=github&utm_medium=challenge&utm_campaign=ai-redteam))
 
 | Submitter | What we tried | Outcome | Rule that fired |
 |-----------|----------------|---------|------------------|
