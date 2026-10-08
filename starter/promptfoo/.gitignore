@@ -1,0 +1,3 @@
+.promptfooconfig.local.yaml
+*.local.yaml
+.promptfoo/

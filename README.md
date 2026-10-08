@@ -49,7 +49,7 @@ Testing the in-scope sandbox API as described above is welcome. Please stay insi
 
 ## 5-minute setup
 
-Fastest path: run `starter/attempt.py`. See [starter/README.md](starter/README.md) for a 2-minute version of everything below.
+Fastest path: run `starter/attempt.py`. See [starter/README.md](starter/README.md) for a 2-minute version of everything below. Already use [promptfoo](https://www.promptfoo.dev) for red-teaming? See [starter/promptfoo/README.md](starter/promptfoo/README.md) to run this challenge with it in one command.
 
 **0. Just want to look first? No sign-up needed**
 
