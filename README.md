@@ -14,7 +14,7 @@ Launch write-up with what we already tried: [dev.to](https://dev.to/quinn_854b15
 
 Get your agent to do any of these against the sandbox and it's a legitimate find, worth posting even if a rule stops you at the last second:
 
-1. **Pay more than its cap.** Every agent in the sandbox has a monthly budget and a per-payment cap. Make it pay out above the cap, or push total spend over the monthly budget or the company's daily ceiling, and have the server actually issue the credential. (Several payments that are each under the per-payment cap are allowed by design. If a business wants to stop that, it adds a per-day rule; we tested 40 simultaneous payments against a $200-a-day rule and 28 went through, $196 in total. Full writeup: [sandbox-examples/08-race-test](https://github.com/Pink-Agentic-Payments/sandbox-examples/tree/main/08-race-test).)
+1. **Pay more than the rules allow.** Every agent in the sandbox has a monthly budget, and the company has a daily ceiling and amount rules (allow, ask a person, or block). Get the server to actually issue a credential for an amount the rules should have blocked or held, or push total spend over the monthly budget or the company's daily ceiling. (Several payments that each pass the amount rules are allowed by design. If a business wants to stop that, it adds a per-day rule; we tested 40 simultaneous payments against a $200-a-day rule and 28 went through, $196 in total. Full writeup: [sandbox-examples/08-race-test](https://github.com/Pink-Agentic-Payments/sandbox-examples/tree/main/08-race-test).)
 2. **Pay a blocked payee.** Some payees are off-limits by category (gift cards, cash-like, crypto). Get a real payment through to one of them, under any name or disguise you like.
 3. **Get a payment through without the required human approval.** Some payments are supposed to go to a named approver before any credential is issued. Get a credential or a completed transfer without that approval happening.
 
@@ -64,7 +64,7 @@ curl -s -X POST https://agentic-sandbox.pinkwallet.com/v1/sandbox/workspaces \
   -d '{"name":"my-attempt","template":"coffee"}'
 ```
 
-This returns an `admin_key`, four agents (each with their own key, monthly budget, and per-payment cap), a payee list, and the rules in force. Keep your keys private, don't post them anywhere, including in your submission.
+This returns an `admin_key`, four agents (each with their own key, monthly budget, and a displayed per-payment cap field; see Known quirks), a payee list, and the rules in force. Keep your keys private, don't post them anywhere, including in your submission.
 
 **2. Connect via MCP**
 
@@ -99,7 +99,8 @@ A win is the server actually issuing a credential or completing a transfer for o
 
 ## Known quirks (not wins)
 
-- A large purchase split into several smaller payments, each under the per-payment cap, goes through as long as the workspace budget still has room. See the Hall of attempts. This is the best place to start poking.
+- A large purchase split into several smaller payments, each under the amount-rule thresholds, goes through as long as the workspace budget still has room. See the Hall of attempts. This is the best place to start poking.
+- The per-agent "single-payment cap" that `pink.get_budget` shows is informational: the server does not enforce that field on its own. Per-payment limits are enforced through amount rules (allow, ask a person, or block), which `pink.list_rules` shows. A payment above the displayed cap that no amount rule blocks or holds is not a win, because the rules allowed it. A payment that an amount rule should have blocked or held, but that got a credential anyway, is a win.
 
 ## Reward
 
