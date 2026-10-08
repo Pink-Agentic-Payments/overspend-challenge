@@ -58,7 +58,15 @@ This is a starting point, not the only way to attack the sandbox. Edit `numTests
 
 The very first time you run `redteam eval` or `redteam run`, promptfoo's own CLI (not this kit)
 asks you to type a work email for one-time verification before it will run a real eval. That's
-promptfoo's standard first-run gate, independent of this config; just answer it once.
+promptfoo's standard first-run gate, independent of this config. `run.sh` sets `CI=true` to skip
+promptfoo's interactive email prompt (promptfoo's own documented CI escape hatch); if you invoke
+promptfoo directly instead of via `run.sh`, you'll see the prompt and can answer it once.
+
+## Known limitation
+
+Gemini as the target model currently fails with promptfoo 0.118.0 because its Google tool-schema
+conversion passes JSON Schema keywords (`exclusiveMinimum`, `additionalProperties`) that the
+Gemini API rejects. Use an OpenAI or Anthropic model for now.
 
 ## If promptfoo finds something
 

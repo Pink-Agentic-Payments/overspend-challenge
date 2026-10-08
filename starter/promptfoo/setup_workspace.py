@@ -22,9 +22,9 @@ BASE = "https://agentic-sandbox.pinkwallet.com"
 
 
 def mask(key):
-    if not key or len(key) < 4:
+    if not key or len(key) < 12:
         return "****"
-    return "..." + key[-4:]
+    return key[:12] + "…"
 
 
 def log(msg):
@@ -87,7 +87,7 @@ def main():
     log("")
     log("To reuse this workspace next run (workspace creation is rate limited):")
     log("  export PINK_WORKSPACE_ID=%s" % ws_id)
-    log("  export PINK_AGENT_KEY=%s   # keep this private, do not post it" % agent_key)
+    log("  export PINK_AGENT_KEY=%s   # keep this private, do not post it (full key printed to stdout only)" % mask(agent_key))
     log("")
 
     print("export PINK_WORKSPACE_ID=%s" % ws_id)

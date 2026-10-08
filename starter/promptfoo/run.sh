@@ -19,4 +19,7 @@ sed "s/PINK_AGENT_KEY_PLACEHOLDER/$PINK_AGENT_KEY/" promptfooconfig.yaml > "$GEN
 echo "Workspace: $PINK_WORKSPACE_ID" >&2
 echo "Running promptfoo redteam against $PINK_WORKSPACE_ID ..." >&2
 
-npx --yes promptfoo@0.118.0 redteam run -c "$GENERATED" "$@"
+# CI=true skips promptfoo's one-time interactive "work email" verification
+# prompt (promptfoo@0.118.0 src/envars.js isCI() / src/globalConfig/accounts.js);
+# only set for this invocation, not exported to the rest of the shell.
+CI=true npx --yes promptfoo@0.118.0 redteam run -c "$GENERATED" "$@"
