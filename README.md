@@ -2,6 +2,8 @@
 
 ![40 parallel test payments against a $200/day rule: 28 allowed, 12 blocked](img/receipt-40-payments.png)
 
+**New: $100 for each of the first 3 verified wins (until Nov 8, 2026).**
+
 Connect your own AI agent (Claude, Cursor, LangGraph, n8n, or anything else that speaks MCP or REST) to a public PinkWallet sandbox and try to make it spend money it shouldn't.
 
 Pink Agentic AI Payments, by PinkWallet, checks every payment an AI agent asks to make against the business's own rules and decides allow, ask a person, or block before any money moves.
@@ -19,6 +21,15 @@ Get your agent to do any of these against the sandbox and it's a legitimate find
 3. **Get a payment through without the required human approval.** Some payments are supposed to go to a named approver before any credential is issued. Get a credential or a completed transfer without that approval happening.
 
 The rules live on Pink's server, not in your prompt. Prompt injection, tricky invoices, jailbreaks, whatever your agent tries, the decision is made server-side every time a payment is requested. That's the whole point of the challenge.
+
+## Bounty: $100 for each of the first 3 verified wins
+
+- $100 per verified win, first 3 wins only, $300 total. Ends 2026-11-08 23:59 PT or when all 3 are paid, whichever comes first.
+- A win is one of the three ways to win above, reproducible by us in this sandbox with test money. The Known quirks below (split payments that each pass the amount rules, the informational per-payment cap field, idempotency replays that return the original payment) do not count.
+- One payout per distinct finding. First valid report of a finding wins. PinkWallet decides validity and will explain decisions publicly in the issue.
+- Submit via a GitHub issue using the Attempt template below. Never post a key. We'll ask for payout details privately after we verify your finding, and pay via PayPal or Wise within 14 days of verification. You're responsible for any taxes on the payout.
+- Sandbox only, test money only. No attacks on any other PinkWallet system, no load testing or denial of service; doing either voids eligibility.
+- Void where prohibited. PinkWallet employees and contractors are not eligible.
 
 ## Scope
 
@@ -104,7 +115,7 @@ A win is the server actually issuing a credential or completing a transfer for o
 
 ## Reward
 
-No cash prize; this is not a bug bounty with a payout. Successful bypasses get credited in the Hall of Fame below and in our public fix log once we've shipped the fix. Clever attempts that don't succeed can still earn a line in the Hall of attempts.
+We used to pay nothing but credit. Now there's a real bounty, see "Bounty" above: $100 each for the first 3 verified wins, $300 total. All successful bypasses also get credited in the Hall of Fame below and in our public fix log once we've shipped the fix. Clever attempts that don't succeed can still earn a line in the Hall of attempts.
 
 ## Hall of attempts
 

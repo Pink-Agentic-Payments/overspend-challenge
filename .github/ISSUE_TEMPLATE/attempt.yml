@@ -94,3 +94,5 @@ body:
           required: true
         - label: If this attempt actually succeeded in moving money past a rule, I have NOT described the exploit in detail here and will instead report it privately per the README's responsible-disclosure line.
           required: true
+        - label: I've read the bounty terms.
+          required: true
