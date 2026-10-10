@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body {
+    width:1200px; height:627px;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background:#ffffff;
+    overflow:hidden;
+  }
+  .stage {
+    width:1200px; height:627px;
+    display:flex;
+    position:relative;
+    background:#0B0B0E;
+  }
+  .left {
+    width:700px;
+    height:627px;
+    color:#fff;
+    padding:56px 56px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .brand {
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand-dot {
+    width:14px; height:14px; border-radius:50%;
+    background:#FF2D87;
+  }
+  .brand-name {
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:-0.2px;
+  }
+  .eyebrow {
+    font-family:'Courier New', monospace;
+    font-size:14px;
+    letter-spacing:2px;
+    color:#FF2D87;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:18px;
+  }
+  .big {
+    font-size:76px;
+    line-height:1.05;
+    font-weight:800;
+    letter-spacing:-1.5px;
+    color:#FF2D87;
+  }
+  .line1 {
+    font-size:22px;
+    line-height:1.4;
+    color:#F2F2F4;
+    font-weight:600;
+    margin-top:28px;
+  }
+  .line2 {
+    font-size:22px;
+    line-height:1.4;
+    color:#C9C9CE;
+    font-weight:500;
+    margin-top:12px;
+  }
+
+  .right {
+    width:500px;
+    height:627px;
+    background:#F6F3F1;
+    padding:40px 40px 32px 40px;
+    display:flex;
+    flex-direction:column;
+  }
+  .receipt-title {
+    font-family: 'Courier New', monospace;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:2px;
+    color:#0B0B0E;
+    text-transform:uppercase;
+    border-bottom:2px dashed #C9C4C0;
+    padding-bottom:14px;
+    margin-bottom:4px;
+    display:flex;
+    justify-content:space-between;
+  }
+  .row {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:16px 0;
+    border-bottom:1px dashed #D8D3CF;
+    gap:16px;
+  }
+  .row-left {
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .row-title {
+    font-size:15px;
+    font-weight:700;
+    color:#0B0B0E;
+    line-height:1.3;
+  }
+  .row-sub {
+    font-family:'Courier New', monospace;
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:0.5px;
+  }
+  .row-sub .ok { color:#1E7A3C; }
+  .row-sub .bad { color:#B5302A; }
+  .row-sub .mark {
+    background:#FFD4E7;
+    color:#B5302A;
+    padding:1px 4px;
+    border-radius:3px;
+  }
+  .row-amount {
+    font-family:'Courier New', monospace;
+    font-size:15px;
+    font-weight:700;
+    color:#8A8580;
+    white-space:nowrap;
+    padding-top:2px;
+    text-align:right;
+  }
+  .row-amount.gap { color:#B5302A; }
+
+  .total {
+    margin-top:auto;
+    padding-top:16px;
+    border-top:3px solid #0B0B0E;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .total-label {
+    font-family:'Courier New', monospace;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:1px;
+    color:#0B0B0E;
+  }
+  .total-amount {
+    font-family:'Courier New', monospace;
+    font-size:18px;
+    font-weight:800;
+    color:#FF2D87;
+    text-align:right;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="left">
+    <div class="brand">
+      <div class="brand-dot"></div>
+      <div class="brand-name">PinkWallet</div>
+    </div>
+    <div>
+      <div class="eyebrow">Bounty win #1 of 3</div>
+      <div class="big">1 space<br>character</div>
+      <div class="line1">That's all it took to slip past our CFO-approval rule.</div>
+      <div class="line2">We fixed it in 70 minutes. Bounty win #1 of 3.</div>
+    </div>
+    <div class="brand-name" style="font-size:15px; color:#8C8C94; font-weight:600;">PinkWallet</div>
+  </div>
+  <div class="right">
+    <div class="receipt-title"><span>PAYMENT REQUEST</span><span>#001</span></div>
+
+    <div class="row">
+      <div class="row-left">
+        <div class="row-title">currency field, as sent</div>
+        <div class="row-sub"><span class="mark">EUR&#9251;</span></div>
+      </div>
+      <div class="row-amount">amount 999</div>
+    </div>
+
+    <div class="row">
+      <div class="row-left">
+        <div class="row-title">before the fix</div>
+        <div class="row-sub"><span class="bad">read as USD 999</span></div>
+      </div>
+      <div class="row-amount gap">AUTO-ALLOWED</div>
+    </div>
+
+    <div class="row">
+      <div class="row-left">
+        <div class="row-title">after the fix</div>
+        <div class="row-sub"><span class="ok">HTTP 400</span></div>
+      </div>
+      <div class="row-amount">UNKNOWN CURRENCY</div>
+    </div>
+
+    <div class="total">
+      <div class="total-label">THE RULE</div>
+      <div class="total-amount">fail closed, not USD</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
