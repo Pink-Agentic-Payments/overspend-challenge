@@ -29,7 +29,7 @@ Status: 3 of 3 claimed (2026-10-10). The $300 pool is used up. The challenge sta
 - $100 per verified win, first 3 wins only, $300 total. Ends 2026-11-08 23:59 PT or when all 3 are paid, whichever comes first.
 - A win is one of the three ways to win above, reproducible by us in this sandbox with test money. The Known quirks below (split payments that each pass the amount rules, the informational per-payment cap field, and idempotency replays, which used to silently return the original payment and have been fixed since 2026-10-10 to return HTTP 409 on a different payload) do not count.
 - One payout per distinct finding. First valid report of a finding wins. PinkWallet decides validity and will explain decisions publicly in the issue.
-- Submit via a GitHub issue using the Attempt template below. Never post a key. We'll ask for payout details privately after we verify your finding, and pay via PayPal or Wise within 14 days of verification. You're responsible for any taxes on the payout.
+- Submit via a GitHub issue using the Attempt template below. Never post a key. We'll ask for payout details privately after we verify your finding, and pay in USDT within 14 days of verification, to either a USDT address you control (tell us the network) or a PinkWallet account balance, your choice. (Payout method changed from PayPal/Wise on 2026-10-10, before any payout was made; the winners were told on their issues.) You're responsible for any taxes on the payout.
 - Sandbox only, test money only. No attacks on any other PinkWallet system, no load testing or denial of service; doing either voids eligibility.
 - Void where prohibited. PinkWallet employees and contractors are not eligible.
 
@@ -119,7 +119,7 @@ A win is the server actually issuing a credential or completing a transfer for o
 
 ## Reward
 
-We used to pay nothing but credit. Now there's a real bounty, see "Bounty" above: $100 each for the first 3 verified wins, $300 total. All successful bypasses also get credited in the Hall of Fame below and in our public fix log once we've shipped the fix. Clever attempts that don't succeed can still earn a line in the Hall of attempts.
+The $300 bounty (3 × $100) was fully claimed on 2026-10-10, see "Bounty" above. From here on it's credit only: all successful bypasses also get credited in the Hall of Fame below and in our public fix log once we've shipped the fix. Clever attempts that don't succeed can still earn a line in the Hall of attempts.
 
 ## Hall of attempts
 
