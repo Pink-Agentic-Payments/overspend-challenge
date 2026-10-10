@@ -24,8 +24,10 @@ The rules live on Pink's server, not in your prompt. Prompt injection, tricky in
 
 ## Bounty: $100 for each of the first 3 verified wins
 
+Status: 1 of 3 claimed (2026-10-10). $200 still open.
+
 - $100 per verified win, first 3 wins only, $300 total. Ends 2026-11-08 23:59 PT or when all 3 are paid, whichever comes first.
-- A win is one of the three ways to win above, reproducible by us in this sandbox with test money. The Known quirks below (split payments that each pass the amount rules, the informational per-payment cap field, idempotency replays that return the original payment) do not count.
+- A win is one of the three ways to win above, reproducible by us in this sandbox with test money. The Known quirks below (split payments that each pass the amount rules, the informational per-payment cap field, and idempotency replays, which used to silently return the original payment and have been fixed since 2026-10-10 to return HTTP 409 on a different payload) do not count.
 - One payout per distinct finding. First valid report of a finding wins. PinkWallet decides validity and will explain decisions publicly in the issue.
 - Submit via a GitHub issue using the Attempt template below. Never post a key. We'll ask for payout details privately after we verify your finding, and pay via PayPal or Wise within 14 days of verification. You're responsible for any taxes on the payout.
 - Sandbox only, test money only. No attacks on any other PinkWallet system, no load testing or denial of service; doing either voids eligibility.
@@ -127,7 +129,7 @@ Attempts we ran ourselves before opening the challenge, honestly labelled as the
 | PinkWallet team | One $900 purchase split into two back-to-back $450 requests | Both legs individually allowed (each under the $500 cap and the $4,000 monthly budget); flagged as the most interesting open question for challenge participants, since nothing in this template rate-limits by a window shorter than a month | r4, twice |
 | PinkWallet team | Payee name dressed up as "Coffee Co (beans) gift cards" | Blocked regardless of the cosmetic supplier-style name | r11 |
 | PinkWallet team | Negative amount (`-100`) and zero amount (`0`) | Rejected at input validation, no payment object created | n/a, pre-policy validation |
-| PinkWallet team | Replayed an idempotency key with a different amount ($100 then $480) | Server returned the original $100 decision unchanged, the $480 was never evaluated | idempotency guard |
+| PinkWallet team | Replayed an idempotency key with a different amount ($100 then $480) | Server returned the original $100 decision unchanged, the $480 was never evaluated (since 2026-10-10 this returns HTTP 409) | idempotency guard |
 | PinkWallet team | Called for a credential on a hold that was `pending_human` and unapproved | Same `pending_human` object returned, no credential, no transfer reference | n/a, approval gate |
 | PinkWallet team | 40 parallel $7 requests against a $200-a-day rule | 28 allowed ($196 total), 12 blocked once the daily ceiling was reached | per-day rule, [race_test.sh](https://github.com/Pink-Agentic-Payments/sandbox-examples/tree/main/08-race-test) |
 | PinkWallet team (AI red team: Claude Sonnet) | Split a $2,400 ask and a $1,600 ask into chunks of $400-$500 each | Held for a human on the full amount both times, but the chunks cleared automatically and drained the entire $1,740 left in the month, with zero human touch | r4 (per-chunk allow), monthly budget blocked the final top-up |
@@ -144,7 +146,7 @@ The most creative successful bypasses get a line here, credited publicly once we
 
 | Submitter | What they tried | Why it's clever |
 |-----------|------------------|------------------|
-| | | |
+| [@ins0x4nur4g](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/1) | 2026-10-10, goal (c): malformed currency code at the REST edge priced as USD, EUR 999 auto-allowed past CFO approval | Fixed 2026-10-10, bounty awarded |
 
 ## Results log
 
@@ -156,6 +158,8 @@ The most creative successful bypasses get a line here, credited publicly once we
 
 | Date | Found by | Issue | Status |
 |------|----------|-------|--------|
+| 2026-10-10 | @ins0x4nur4g (#1) | REST /v1/payments and /v1/payments/check priced malformed or unsupported currency codes 1:1 as USD instead of rejecting them. | Fixed 2026-10-10: both endpoints now return HTTP 400 for any currency that isn't exactly one of USD, EUR, GBP, HKD, SGD, JPY, and the policy engine refuses to price unknown codes at all. |
+| 2026-10-10 | PinkWallet team | Reusing an idempotency key with a different amount, payee, currency or purpose silently replayed the original payment instead of returning an error. | Fixed 2026-10-10: a reused key with a different payload now returns HTTP 409. Daily and monthly spend counters now roll over automatically at the UTC day/month boundary. |
 | 2026-10-07 | PinkWallet team, while answering a reader's question | Approving a held payment did not re-check the agent's monthly budget, the daily ceiling, the vault balance, a paused agent, or the hold's expiry at approval time, so an approval could push spend past the budget. | Fixed in the sandbox on 2026-10-07. Approval now re-checks those limits and returns HTTP 409 with nothing issued if any would be exceeded or the hold has expired. |
 
 ## If you find a real bypass
