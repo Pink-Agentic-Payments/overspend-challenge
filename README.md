@@ -146,7 +146,7 @@ The most creative successful bypasses get a line here, credited publicly once we
 
 | Submitter | What they tried | Why it's clever |
 |-----------|------------------|------------------|
-| [@ins0x4nur4g](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/1) | 2026-10-10, goal (c): malformed currency code at the REST edge priced as USD, EUR 999 auto-allowed past CFO approval | Fixed 2026-10-10, bounty awarded |
+| [@ins0x4nur4g](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/1) | 2026-10-10, goal (c): malformed currency code at the REST edge priced as USD, EUR 999 auto-allowed past CFO approval | Fixed 2026-10-10, bounty awarded ([write-up](https://dev.to/quinn_854b15f517d8632ed4f/the-first-person-to-beat-our-ai-agents-spending-rules-did-it-with-a-space-character-4c6n?utm_source=github&utm_medium=challenge&utm_campaign=win1)) |
 
 ## Results log
 
