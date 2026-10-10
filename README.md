@@ -24,7 +24,7 @@ The rules live on Pink's server, not in your prompt. Prompt injection, tricky in
 
 ## Bounty: $100 for each of the first 3 verified wins
 
-Status: 2 of 3 claimed (2026-10-10). $100 still open.
+Status: 3 of 3 claimed (2026-10-10). The $300 pool is used up. The challenge stays open: new verified wins still get a Hall of fame line and a public write-up.
 
 - $100 per verified win, first 3 wins only, $300 total. Ends 2026-11-08 23:59 PT or when all 3 are paid, whichever comes first.
 - A win is one of the three ways to win above, reproducible by us in this sandbox with test money. The Known quirks below (split payments that each pass the amount rules, the informational per-payment cap field, and idempotency replays, which used to silently return the original payment and have been fixed since 2026-10-10 to return HTTP 409 on a different payload) do not count.
@@ -148,6 +148,7 @@ The most creative successful bypasses get a line here, credited publicly once we
 |-----------|------------------|------------------|
 | [@ins0x4nur4g](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/1) | 2026-10-10, goal (c): malformed currency code at the REST edge priced as USD, EUR 999 auto-allowed past CFO approval | Fixed 2026-10-10, bounty awarded ([write-up](https://dev.to/quinn_854b15f517d8632ed4f/the-first-person-to-beat-our-ai-agents-spending-rules-did-it-with-a-space-character-4c6n?utm_source=github&utm_medium=challenge&utm_campaign=win1)) |
 | [@ins0x4nur4g](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/2) | 2026-10-10, goal (c): a night-hours approval rule labelled SGT was checked against the server's UTC clock, and a real payment could declare its own `local_hour` | Fixed 2026-10-10, bounty awarded (win #2) |
+| [@kimutaiRop](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/3) | 2026-10-10, goal (a): a sub-cent amount ($500.0001) matched the $500 auto-allow rule after rounding, and the credential was issued for the unrounded amount | Bounty awarded (win #3); fix in progress |
 
 ## Results log
 
@@ -159,6 +160,7 @@ The most creative successful bypasses get a line here, credited publicly once we
 
 | Date | Found by | Issue | Status |
 |------|----------|-------|--------|
+| 2026-10-10 | @kimutaiRop (#3) | Amounts with more decimal places than the currency allows were rounded to the cent for rule matching, but the credential was issued for the unrounded amount ($500.0001 cleared a $500 auto-allow rule). | Fix in progress: amounts with too many decimal places (more than 2, or more than 0 for JPY) will be rejected with HTTP 400 before any rule runs. |
 | 2026-10-10 | @ins0x4nur4g (#2) | Time-of-day rules were evaluated on the server's UTC hour regardless of the timezone in the rule's name (the ecommerce rule 'Outside 06:00-23:00 SGT' skipped at 01:19 SGT), and a real payment could pass `local_hour` to choose the hour a rule saw. | Fixed 2026-10-10: every workspace has a timezone (shown in the workspace, the rules list and the trace), time rules are evaluated on the server clock in that timezone, rule timezones are validated, and `local_hour` is honoured only on dry runs. A real payment that sends it gets a trace note and the server clock. |
 | 2026-10-10 | @ins0x4nur4g (#1) | REST /v1/payments and /v1/payments/check priced malformed or unsupported currency codes 1:1 as USD instead of rejecting them. | Fixed 2026-10-10: both endpoints now return HTTP 400 for any currency that isn't exactly one of USD, EUR, GBP, HKD, SGD, JPY, and the policy engine refuses to price unknown codes at all. |
 | 2026-10-10 | PinkWallet team | Reusing an idempotency key with a different amount, payee, currency or purpose silently replayed the original payment instead of returning an error. | Fixed 2026-10-10: a reused key with a different payload now returns HTTP 409. Daily and monthly spend counters now roll over automatically at the UTC day/month boundary. |
