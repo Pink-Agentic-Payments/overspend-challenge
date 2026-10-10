@@ -77,6 +77,8 @@ curl -s -X POST https://agentic-sandbox.pinkwallet.com/v1/sandbox/workspaces \
   -d '{"name":"my-attempt","template":"coffee"}'
 ```
 
+**Got `403` with `error code: 1010`?** Cloudflare in front of the sandbox rejects the default User-Agent of Python's `urllib` (and Perl's `libwww-perl`) before the request reaches us. Send any ordinary `User-Agent` header (for example `curl/8.4.0`, as above; in Python, `req.add_header("User-Agent", "curl/8.4.0")`). That's the supported setup, not a workaround. `curl`, `requests`, `httpx`, Node and most MCP clients work as they are. Thanks to Dawid for flagging this.
+
 This returns an `admin_key`, four agents (each with their own key, monthly budget, and a displayed per-payment cap field; see Known quirks), a payee list, and the rules in force. Keep your keys private, don't post them anywhere, including in your submission.
 
 **2. Connect via MCP**
