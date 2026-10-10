@@ -1,8 +1,8 @@
-# Can you make an AI agent overspend?
+# Pink Overspend Challenge: can you make an AI agent overspend Pink Agentic AI Payments' spending rules?
 
 ![40 parallel test payments against a $200/day rule: 28 allowed, 12 blocked](img/receipt-40-payments.png)
 
-**New: $100 for each of the first 3 verified wins (until Nov 8, 2026).**
+**All 3 Pink bounties ($100 each) were claimed on Oct 10, 2026, by two outside developers. The Pink Overspend Challenge stays open: every new verified win gets a Hall of fame line and a public write-up.**
 
 Connect your own AI agent (Claude, Cursor, LangGraph, n8n, or anything else that speaks MCP or REST) to a public PinkWallet sandbox and try to make it spend money it shouldn't.
 
