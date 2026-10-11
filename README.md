@@ -160,6 +160,8 @@ The most creative successful bypasses get a line here, credited publicly once we
 
 ## Fix log
 
+The three findings below are now an open test suite you can run against your own spending-rules API: [agent-spend-edge-cases](https://github.com/Pink-Agentic-Payments/agent-spend-edge-cases) (21 edge-case inputs; first run on the Pink sandbox 2026-10-10: 19 safe, 2 = finding #3, fix in progress).
+
 | Date | Found by | Issue | Status |
 |------|----------|-------|--------|
 | 2026-10-10 | @kimutaiRop (#3) | Amounts with more decimal places than the currency allows were rounded to the cent for rule matching, but the credential was issued for the unrounded amount ($500.0001 cleared a $500 auto-allow rule). | Fix in progress: amounts with too many decimal places (more than 2, or more than 0 for JPY) will be rejected with HTTP 400 before any rule runs. |
