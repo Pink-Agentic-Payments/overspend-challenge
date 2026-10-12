@@ -12,6 +12,19 @@ We think the rules hold. We built this sandbox so you can try to prove us wrong,
 
 Launch write-up with what we already tried: [dev.to](https://dev.to/quinn_854b15f517d8632ed4f/please-try-to-make-our-ai-agent-overspend-test-money-real-rules-2l5f).
 
+## Install Pink
+
+| What | Install | Repo |
+|---|---|---|
+| JS/TS client | `npm install pink-agentic-payments` | [pink-agentic-payments-js](https://github.com/Pink-Agentic-Payments/pink-agentic-payments-js) |
+| Python client | PyPI pending → `pip install git+https://github.com/Pink-Agentic-Payments/pink-agentic-payments-python` | [pink-agentic-payments-python](https://github.com/Pink-Agentic-Payments/pink-agentic-payments-python) |
+| MCP server (stdio, any MCP client) | `npx -y pink-agentic-payments-mcp` (env `PINK_AGENT_API_KEY`) | [pink-agentic-payments-mcp](https://github.com/Pink-Agentic-Payments/pink-agentic-payments-mcp) |
+| Vercel AI SDK tools | `npm install pink-agentic-payments-ai-sdk ai zod` | [pink-agentic-payments-ai-sdk](https://github.com/Pink-Agentic-Payments/pink-agentic-payments-ai-sdk) |
+| LangChain / LangGraph tools | PyPI pending → git install, see repo README | [langchain-pink](https://github.com/Pink-Agentic-Payments/langchain-pink) |
+| n8n community node | n8n: Settings → Community Nodes → `n8n-nodes-pink` | [n8n-nodes-pink](https://github.com/Pink-Agentic-Payments/n8n-nodes-pink) |
+
+Remote MCP endpoint: `https://agentic-sandbox.pinkwallet.com/mcp` · Docs: https://pinkwallet.com/agentic/developers/ · Sandbox (test money, no signup): https://agentic-sandbox.pinkwallet.com
+
 ### Design partners wanted
 
 We're looking for 3 design partners to try Pink Agentic AI Payments on a real use case before general availability. If your team builds AI agents that pay for things, or you run a lot of small automated payments (ad accounts, suppliers, subscriptions), we'll set up your rules with you directly and give you a direct line to the founder.
