@@ -12,6 +12,12 @@ We think the rules hold. We built this sandbox so you can try to prove us wrong,
 
 Launch write-up with what we already tried: [dev.to](https://dev.to/quinn_854b15f517d8632ed4f/please-try-to-make-our-ai-agent-overspend-test-money-real-rules-2l5f).
 
+### Design partners wanted
+
+We're looking for 3 design partners to try Pink Agentic AI Payments on a real use case before general availability. If your team builds AI agents that pay for things, or you run a lot of small automated payments (ad accounts, suppliers, subscriptions), we'll set up your rules with you directly and give you a direct line to the founder.
+
+If you've been poking at this repo or the sandbox already, you're exactly who we're looking for. Try the sandbox at [agentic-sandbox.pinkwallet.com/demo](https://agentic-sandbox.pinkwallet.com/demo). Free during the design-partner period. Reach us at [support@pinkwallet.com](mailto:support@pinkwallet.com) or open an issue titled "Design partner" in this repo.
+
 ## The three ways to win
 
 Get your agent to do any of these against the sandbox and it's a legitimate find, worth posting even if a rule stops you at the last second:
