@@ -179,7 +179,7 @@ The most creative successful bypasses get a line here, credited publicly once we
 
 ## Fix log
 
-The three findings below are now an open test suite you can run against your own spending-rules API: [agent-spend-edge-cases](https://github.com/Pink-Agentic-Payments/agent-spend-edge-cases) (21 edge-case inputs; first run on the Pink sandbox 2026-10-10: 19 safe, 2 = finding #3, fix in progress).
+The three findings below are now an open test suite you can run against your own spending-rules API: [agent-spend-edge-cases](https://github.com/Pink-Agentic-Payments/agent-spend-edge-cases) (23 edge-case inputs; latest run on the Pink sandbox 2026-10-13: 20 safe, 2 = finding #3 with the fix in progress, 1 not applicable, 0 unsafe).
 
 | Date | Found by | Issue | Status |
 |------|----------|-------|--------|
