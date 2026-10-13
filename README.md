@@ -167,9 +167,11 @@ The most creative successful bypasses get a line here, credited publicly once we
 
 | Submitter | What they tried | Why it's clever |
 |-----------|------------------|------------------|
-| [@ins0x4nur4g](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/1) | 2026-10-10, goal (c): malformed currency code at the REST edge priced as USD, EUR 999 auto-allowed past CFO approval | Fixed 2026-10-10, bounty awarded ([write-up](https://dev.to/quinn_854b15f517d8632ed4f/the-first-person-to-beat-our-ai-agents-spending-rules-did-it-with-a-space-character-4c6n?utm_source=github&utm_medium=challenge&utm_campaign=win1)) |
-| [@ins0x4nur4g](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/2) | 2026-10-10, goal (c): a night-hours approval rule labelled SGT was checked against the server's UTC clock, and a real payment could declare its own `local_hour` | Fixed 2026-10-10, bounty awarded (win #2) |
-| [@kimutaiRop](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/3) | 2026-10-10, goal (a): a sub-cent amount ($500.0001) matched the $500 auto-allow rule after rounding, and the credential was issued for the unrounded amount | Bounty awarded (win #3); fix in progress |
+| [@ins0x4nur4g](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/1) | 2026-10-10, goal (c): malformed currency code at the REST edge priced as USD, EUR 999 auto-allowed past CFO approval | Fixed 2026-10-10, bounty paid 2026-10-13 ([write-up](https://dev.to/quinn_854b15f517d8632ed4f/the-first-person-to-beat-our-ai-agents-spending-rules-did-it-with-a-space-character-4c6n?utm_source=github&utm_medium=challenge&utm_campaign=win1)) |
+| [@ins0x4nur4g](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/2) | 2026-10-10, goal (c): a night-hours approval rule labelled SGT was checked against the server's UTC clock, and a real payment could declare its own `local_hour` | Fixed 2026-10-10, bounty paid 2026-10-13 (win #2) |
+| [@kimutaiRop](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/3) | 2026-10-10, goal (a): a sub-cent amount ($500.0001) matched the $500 auto-allow rule after rounding, and the credential was issued for the unrounded amount | Bounty paid 2026-10-13 (win #3); fix in progress |
+
+All three bounties were paid on 2026-10-13 in USDT (Polygon and TRON); transaction links are in issues [#2](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/2) and [#3](https://github.com/Pink-Agentic-Payments/overspend-challenge/issues/3). The Hall of fame stays open, credit only.
 
 ## Results log
 
